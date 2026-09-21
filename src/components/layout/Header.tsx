@@ -2,9 +2,12 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Logo } from "@/components/brand";
 import { MobileNav } from "./MobileNav";
+import { LanguageSwitcher } from "@/components/ui/LanguageSwitcher";
+import { useLanguage } from "@/lib/i18n";
 
 export function Header() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const { t } = useLanguage();
 
   return (
     <>
@@ -19,35 +22,39 @@ export function Header() {
               to="/"
               className="font-body text-label-sm uppercase tracking-[0.18em] text-on-surface-variant hover:text-primary transition-colors"
             >
-              Home
+              {t("nav.home")}
             </Link>
             <Link
               to="/#how-it-works"
               className="font-body text-label-sm uppercase tracking-[0.18em] text-on-surface-variant hover:text-primary transition-colors"
             >
-              How It Works
+              {t("nav.howItWorks")}
             </Link>
             <Link
               to="/#our-story"
               className="font-body text-label-sm uppercase tracking-[0.18em] text-on-surface-variant hover:text-primary transition-colors"
             >
-              Our Story
+              {t("nav.ourStory")}
             </Link>
+            <LanguageSwitcher />
             <Link
               to="/order"
               className="inline-flex items-center justify-center px-6 py-2.5 bg-primary-container text-on-primary font-body text-label-md uppercase tracking-[0.15em] hover:bg-primary transition-all duration-300"
             >
-              Get VARENO
+              {t("nav.getVareno")}
             </Link>
           </nav>
 
-          <button
-            className="md:hidden text-on-surface-variant hover:text-primary transition-colors"
-            aria-label="Open menu"
-            onClick={() => setMobileNavOpen(true)}
-          >
-            <span className="material-symbols-outlined text-[24px]">menu</span>
-          </button>
+          <div className="flex md:hidden items-center gap-3">
+            <LanguageSwitcher />
+            <button
+              className="text-on-surface-variant hover:text-primary transition-colors"
+              aria-label="Open menu"
+              onClick={() => setMobileNavOpen(true)}
+            >
+              <span className="material-symbols-outlined text-[24px]">menu</span>
+            </button>
+          </div>
         </div>
       </header>
 

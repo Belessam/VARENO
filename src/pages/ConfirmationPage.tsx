@@ -17,6 +17,7 @@ import { getOrderByReference, uploadPaymentProof } from "@/lib/services";
 import { Icon } from "@/components/ui/Icon";
 import { Divider } from "@/components/ui/Divider";
 import { Logo } from "@/components/brand";
+import { useLanguage } from "@/lib/i18n";
 
 interface OrderData {
   order: Record<string, unknown>;
@@ -26,6 +27,7 @@ interface OrderData {
 export default function ConfirmationPage() {
   const [searchParams] = useSearchParams();
   const orderRef = searchParams.get("ref");
+  const { t } = useLanguage();
 
   const [orderData, setOrderData] = useState<OrderData | null>(null);
   const [loading, setLoading] = useState(false);
@@ -94,7 +96,7 @@ export default function ConfirmationPage() {
           to="/"
           className="inline-flex items-center justify-center px-8 py-4 bg-primary-container text-on-primary font-body text-label-md uppercase tracking-[0.15em] hover:bg-primary transition-all"
         >
-          Return to Atelier Home
+          {t("confirmation.returnHome")}
         </Link>
       </main>
     );
@@ -108,10 +110,10 @@ export default function ConfirmationPage() {
           <div className="flex flex-col items-center mb-8">
             <Logo variant="full" className="mb-lg" />
             <h1 className="font-display text-headline-md text-on-surface mb-2">
-              Verify Your Order
+              {t("confirmation.verifyTitle")}
             </h1>
             <p className="text-on-surface-variant text-body-md text-center">
-              Enter the email address used when placing order{" "}
+              {t("confirmation.verifyDesc")}{" "}
               <span className="text-primary font-semibold">#{orderRef}</span> to
               view its details.
             </p>
@@ -123,7 +125,7 @@ export default function ConfirmationPage() {
                 htmlFor="verify-email"
                 className="block font-body text-label-sm uppercase tracking-[0.18em] text-on-surface-variant"
               >
-                Email Address Used in Order
+                {t("confirmation.verifyEmailLabel")}
               </label>
               <input
                 id="verify-email"
@@ -149,7 +151,7 @@ export default function ConfirmationPage() {
               disabled={loading || !emailInput}
               className="w-full py-4 bg-primary-container text-on-primary font-body text-label-md uppercase tracking-[0.15em] hover:bg-primary transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {loading ? "VERIFYING..." : "VIEW ORDER DETAILS"}
+              {loading ? "VERIFYING..." : t("confirmation.viewDetails")}
             </button>
           </div>
 
@@ -158,7 +160,7 @@ export default function ConfirmationPage() {
               to="/"
               className="font-body text-label-sm text-primary uppercase tracking-[0.18em] underline underline-offset-8 decoration-primary/40 hover:decoration-primary transition-colors"
             >
-              Return to Atelier Home
+              {t("confirmation.returnHome")}
             </Link>
           </div>
         </div>
@@ -191,7 +193,7 @@ export default function ConfirmationPage() {
           to="/"
           className="inline-flex items-center justify-center px-8 py-4 bg-primary-container text-on-primary font-body text-label-md uppercase tracking-[0.15em] hover:bg-primary transition-all"
         >
-          Return to Atelier Home
+          {t("confirmation.returnHome")}
         </Link>
       </main>
     );
@@ -219,33 +221,32 @@ export default function ConfirmationPage() {
         <Logo variant="full" className="mb-lg" />
 
         <div className="mt-2 inline-flex items-center gap-1.5 px-3 py-1 bg-surface-container-high text-primary border border-outline-variant/30">
-          <Icon name="check_circle" size="sm" filled />
-          <span className="font-body text-label-sm uppercase tracking-[0.18em] text-primary">
-            Confirmed &amp; Registered
-          </span>
-        </div>
+              <Icon name="check_circle" size="sm" filled />
+              <span className="font-body text-label-sm uppercase tracking-[0.18em] text-primary">
+                {t("confirmation.confirmed")}
+              </span>
+            </div>
 
-        <div className="flex items-center gap-3 mt-lg mb-xs">
-          <span className="h-[1px] w-6 bg-gradient-to-r from-transparent to-primary" />
-          <span className="font-body text-eyebrow text-primary uppercase tracking-[0.25em]">
-            Acquisition Registered
-          </span>
-          <span className="h-[1px] w-6 bg-gradient-to-l from-transparent to-primary" />
-        </div>
+            <div className="flex items-center gap-3 mt-lg mb-xs">
+              <span className="h-[1px] w-6 bg-gradient-to-r from-transparent to-primary" />
+              <span className="font-body text-eyebrow text-primary uppercase tracking-[0.25em]">
+                {t("confirmation.acquisitionRegistered")}
+              </span>
+              <span className="h-[1px] w-6 bg-gradient-to-l from-transparent to-primary" />
+            </div>
 
-        <h1 className="font-display text-headline-lg md:text-display-xl text-on-surface tracking-wide mt-1 mb-md font-medium">
-          ORDER CONFIRMED
-        </h1>
+            <h1 className="font-display text-headline-lg md:text-display-xl text-on-surface tracking-wide mt-1 mb-md font-medium">
+              {t("confirmation.orderConfirmed")}
+            </h1>
 
-        <p className="font-body text-body-md md:text-body-lg text-on-surface-variant font-light leading-relaxed max-w-xl">
-          Thank you for choosing VARENO. Your bespoke order has been registered
-          at our atelier and prepared for artisanal inspection.
-        </p>
+            <p className="font-body text-body-md md:text-body-lg text-on-surface-variant font-light leading-relaxed max-w-xl">
+              {t("confirmation.thankYou")}
+            </p>
 
         <div className="mt-lg inline-flex flex-col sm:flex-row items-center gap-2 sm:gap-4 px-4 sm:px-lg py-2 bg-surface-container shadow-md text-center">
           <div className="flex items-center gap-2">
             <span className="font-body text-label-sm text-outline uppercase tracking-[0.18em]">
-              Order Reference
+              {t("confirmation.orderReference")}
             </span>
             <span className="font-body text-label-md text-primary font-semibold tracking-[0.15em]">
               #{reference}
@@ -351,7 +352,7 @@ export default function ConfirmationPage() {
                   </span>
                 </div>
                 <div className="text-right">
-                  <span className="font-display text-headline-md text-primary font-semibold tracking-tight">
+                  <span className="font-body text-headline-sm text-primary font-light tracking-wide">
                     {formatPriceEGP(totalPiastres)}
                   </span>
                   <span className="font-body text-label-sm text-outline uppercase ml-1">
@@ -630,20 +631,20 @@ export default function ConfirmationPage() {
           to="/"
           className="w-full py-4 px-xl bg-primary text-on-primary font-body text-label-md uppercase tracking-[0.2em] font-semibold text-center hover:bg-primary-fixed hover:shadow-[0_0_24px_rgba(200,164,106,0.35)] active:scale-[0.99] transition-all"
         >
-          Return to Atelier Home
+          {t("confirmation.returnHome")}
         </Link>
       </div>
 
       {/* Contact */}
       <div className="mt-lg flex flex-col items-center gap-1 text-center">
         <p className="font-body text-body-sm text-on-surface-variant">
-          Need assistance or customized dispatch instructions?
+          {t("confirmation.needHelp")}
         </p>
         <Link
           to="/contact"
           className="font-body text-label-sm text-primary uppercase tracking-[0.18em] underline underline-offset-8 decoration-primary/40 hover:decoration-primary transition-colors"
         >
-          Contact Atelier Concierge →
+          {t("contactAtelier")}
         </Link>
       </div>
     </div>

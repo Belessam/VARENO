@@ -52,7 +52,7 @@ export function ProductImageGallery({
     <div className={`w-full ${maxWidthClass} mx-auto flex flex-col ${className}`}>
       {/* Main Image */}
       <div
-        className={`relative w-full ${aspectClass} flex items-center justify-center overflow-hidden group`}
+        className={`relative w-full ${aspectClass} flex items-center justify-center overflow-hidden group bg-surface-container-low`}
       >
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent opacity-80 z-10 pointer-events-none" />
@@ -103,24 +103,24 @@ export function ProductImageGallery({
         )}
       </div>
 
-      {/* Thumbnail Strip — horizontal row under main image, perfectly aligned */}
-      <div className="flex items-center justify-center gap-3 mt-2 w-full overflow-x-auto pb-1">
+      {/* Thumbnail Strip — consistent square thumbnails */}
+      <div className="flex items-center justify-center gap-2 sm:gap-3 mt-3 w-full">
         {images.map((image, index) => (
           <button
             key={image.src}
             type="button"
             onClick={() => setSelectedIndex(index)}
-            className={`relative flex-shrink-0 w-16 h-16 lg:w-20 lg:h-20 bg-surface-container-low overflow-hidden transition-all duration-200 cursor-pointer ${
+            className={`relative flex-shrink-0 w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-surface-container-low overflow-hidden transition-all duration-200 cursor-pointer ${
               index === selectedIndex
-                ? "border-2 border-primary"
-                : "border-2 border-transparent opacity-60 hover:opacity-100"
+                ? "border-2 border-primary shadow-[0_0_8px_rgba(231,193,132,0.3)]"
+                : "border-2 border-outline-variant/30 opacity-60 hover:opacity-100"
             }`}
             aria-label={`View ${image.alt}`}
           >
             <img
               src={image.src}
               alt={image.alt}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain p-1"
             />
           </button>
         ))}

@@ -6,39 +6,38 @@
  */
 
 import { Icon } from "@/components/ui/Icon";
-
-const benefits = [
-  {
-    icon: "shield",
-    number: "01",
-    title: "ASH CONTAINMENT",
-    description:
-      "Keeps ash and stray embers 100% contained within the internal chamber.",
-  },
-  {
-    icon: "forest",
-    number: "02",
-    title: "PREMIUM FINISH",
-    description:
-      "A refined wood-inspired finish paired with brass-inspired detailing — designed to look and feel exceptional.",
-  },
-  {
-    icon: "directions_car",
-    number: "03",
-    title: "TRAVEL READY",
-    description:
-      "Engineered specifically for automobile cabins, private decks, and everyday carry.",
-  },
-  {
-    icon: "refresh",
-    number: "04",
-    title: "EASY TO EMPTY",
-    description:
-      "Quarter-turn removable brass-inspired end cap discharges cleanly in seconds.",
-  },
-];
+import { useLanguage } from "@/lib/i18n";
 
 export function BenefitsSection() {
+  const { t } = useLanguage();
+
+  const benefits = [
+    {
+      icon: "shield",
+      number: "01",
+      title: t("benefits.ash.title"),
+      description: t("benefits.ash.desc"),
+    },
+    {
+      icon: "forest",
+      number: "02",
+      title: t("benefits.finish.title"),
+      description: t("benefits.finish.desc"),
+    },
+    {
+      icon: "directions_car",
+      number: "03",
+      title: t("benefits.travel.title"),
+      description: t("benefits.travel.desc"),
+    },
+    {
+      icon: "refresh",
+      number: "04",
+      title: t("benefits.empty.title"),
+      description: t("benefits.empty.desc"),
+    },
+  ];
+
   return (
     <section className="w-full py-xl">
       <div className="max-w-7xl mx-auto px-gutter-mobile lg:px-gutter-desktop">

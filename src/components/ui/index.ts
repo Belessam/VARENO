@@ -13,3 +13,4 @@ export { PriceDisplay } from "./PriceDisplay";
 export { Spinner } from "./Spinner";
 export { ErrorMessage } from "./ErrorMessage";
 export { ProductImageGallery } from "./ProductImageGallery";
+export { LanguageSwitcher } from "./LanguageSwitcher";

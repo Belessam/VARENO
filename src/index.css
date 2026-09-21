@@ -269,8 +269,8 @@
 }
 
 /* ============================================
-   RESPONSIVE / MOBILE UTILITIES
-   ============================================ */
+    RESPONSIVE / MOBILE UTILITIES
+    ============================================ */
 
 @layer utilities {
   /* Minimum touch target size for mobile (44x44px per WCAG) */
@@ -287,4 +287,69 @@
   .pt-safe {
     padding-top: env(safe-area-inset-top, 0px);
   }
+}
+
+/* ============================================
+    RTL SUPPORT
+    ============================================ */
+
+[dir="rtl"] .material-symbols-outlined {
+  direction: ltr;
+}
+
+/* Auto-flip left/right positioning in RTL */
+[dir="rtl"] .left-3 {
+  left: auto !important;
+  right: 0.75rem !important;
+}
+
+[dir="rtl"] .right-3 {
+  right: auto !important;
+  left: 0.75rem !important;
+}
+
+[dir="rtl"] .left-4 {
+  left: auto !important;
+  right: 1rem !important;
+}
+
+[dir="rtl"] .right-4 {
+  right: auto !important;
+  left: 1rem !important;
+}
+
+[dir="rtl"] .left-6 {
+  left: auto !important;
+  right: 1.5rem !important;
+}
+
+[dir="rtl"] .right-6 {
+  right: auto !important;
+  left: 1.5rem !important;
+}
+
+[dir="rtl"] .-translate-x-1 {
+  --tw-translate-x: 0.25rem !important;
+}
+
+/* Flip list-disc indent in RTL */
+[dir="rtl"] .pl-6 {
+  padding-left: 0 !important;
+  padding-right: 1.5rem !important;
+}
+
+/* Flip translate-x-1 for arrow hover in RTL */
+[dir="rtl"] .group:hover .group-hover\:translate-x-1 {
+  --tw-translate-x: -0.25rem !important;
+}
+
+/* RTL: Flip active indicator bar in PaymentMethodToggle */
+[dir="rtl"] .left-0.top-0 {
+  left: auto !important;
+  right: 0 !important;
+}
+
+/* RTL: Text alignment for payment toggle */
+[dir="rtl"] .text-left {
+  text-align: right !important;
 }

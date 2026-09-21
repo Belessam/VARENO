@@ -6,35 +6,35 @@
  */
 
 import { Icon } from "@/components/ui/Icon";
-
-const steps = [
-  {
-    number: "01",
-    icon: "login",
-    title: "INSERT",
-    description:
-      "Place your cigarette securely inside the heat-resistant collar. The calibrated gasket secures standard dimensions with a confident, airtight friction seal.",
-    spec: "TOLERANCE: ±0.05MM",
-  },
-  {
-    number: "02",
-    icon: "air",
-    title: "SMOKE",
-    description:
-      "Enjoy a pristine ritual while lateral vents channel clean airflow and trap all ash safely within the containment cylinder. No burns, zero residue.",
-    spec: "AIRFLOW: DUAL LINEAR SLOTS",
-  },
-  {
-    number: "03",
-    icon: "delete_sweep",
-    title: "EMPTY",
-    description:
-      "Unscrew the knurled end cap with a quarter turn and tap out contents directly into any receptacle. Reassemble instantly without tools or complex cleaning.",
-    spec: "MECHANISM: 90° THREADLESS LOCK",
-  },
-];
+import { useLanguage } from "@/lib/i18n";
 
 export function HowItWorksSection() {
+  const { t } = useLanguage();
+
+  const steps = [
+    {
+      number: "01",
+      icon: "login",
+      title: t("howItWorks.step1"),
+      description: t("howItWorks.step1Desc"),
+      spec: "TOLERANCE: ±0.05MM",
+    },
+    {
+      number: "02",
+      icon: "air",
+      title: t("howItWorks.step2"),
+      description: t("howItWorks.step2Desc"),
+      spec: "AIRFLOW: DUAL LINEAR SLOTS",
+    },
+    {
+      number: "03",
+      icon: "delete_sweep",
+      title: t("howItWorks.step3"),
+      description: t("howItWorks.step3Desc"),
+      spec: "MECHANISM: 90° THREADLESS LOCK",
+    },
+  ];
+
   return (
     <section
       className="w-full py-2xl lg:py-4xl bg-surface-container-lowest relative"
@@ -45,12 +45,11 @@ export function HowItWorksSection() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 mt-16">
           <div>
             <h2 className="font-display text-headline-lg uppercase text-on-surface tracking-[0.03em]">
-              HOW IT WORKS
+              {t("howItWorks.title")}
             </h2>
           </div>
           <p className="font-body text-body-md text-on-surface-variant max-w-sm">
-            Three uncomplicated movements transform the smoke break into an
-            immaculate, zero-mess routine.
+            {t("howItWorks.subtitle")}
           </p>
         </div>
 
